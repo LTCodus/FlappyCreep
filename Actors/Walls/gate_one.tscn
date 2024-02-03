@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://biy4d6islihah"]
+
+[ext_resource type="Script" path="res://GateOne.gd" id="1_7yajh"]
+[ext_resource type="Texture2D" uid="uid://dkq1swbmmxmbq" path="res://dodge_the_creeps_2d_assets/assets/Bouncy Platform Long.png" id="2_3ffe0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeeny"]
+size = Vector2(57, 701)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p8g8"]
+size = Vector2(57.5, 699)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5rxk"]
+size = Vector2(18, 174)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(0, 354)
+script = ExtResource("1_7yajh")
+
+[node name="GateOne" type="Area2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GateOne"]
+position = Vector2(-2.5, -419.5)
+shape = SubResource("RectangleShape2D_yeeny")
+
+[node name="Sprite2D" type="Sprite2D" parent="GateOne"]
+position = Vector2(-3, -419)
+rotation = 1.5708
+scale = Vector2(2.28, 1)
+texture = ExtResource("2_3ffe0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GateOne"]
+position = Vector2(-3.25, 412.5)
+shape = SubResource("RectangleShape2D_7p8g8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="GateOne"]
+position = Vector2(-4, 413)
+rotation = 1.5708
+scale = Vector2(2.28, 1)
+texture = ExtResource("2_3ffe0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="GateOne"]
+
+[node name="ScoreGate" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreGate"]
+position = Vector2(37, 0)
+shape = SubResource("RectangleShape2D_q5rxk")
+
+[connection signal="screen_exited" from="GateOne/VisibleOnScreenNotifier2D" to="GateOne" method="_on_visible_on_screen_notifier_2d_screen_exited"]

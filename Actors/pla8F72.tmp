@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://en6soysreg5w"]
+
+[ext_resource type="Script" path="res://Actors/player.gd" id="1_ay3sh"]
+[ext_resource type="Texture2D" uid="uid://qmyckuncfpeg" path="res://dodge_the_creeps_2d_assets/art/playerGrey_up1.png" id="2_d8b3v"]
+[ext_resource type="Texture2D" uid="uid://dfccgrixm4yhp" path="res://dodge_the_creeps_2d_assets/art/playerGrey_up2.png" id="3_676ri"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1qa72"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tryct"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d8b3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_676ri")
+}],
+"loop": true,
+"name": &"flap",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_urwou"]
+radius = 56.6666
+height = 140.0
+
+[node name="Player" type="RigidBody2D"]
+position = Vector2(541, 322)
+scale = Vector2(0.3, 0.3)
+physics_material_override = SubResource("PhysicsMaterial_1qa72")
+script = ExtResource("1_ay3sh")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tryct")
+animation = &"flap"
+frame = 1
+frame_progress = 0.130122
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_urwou")
